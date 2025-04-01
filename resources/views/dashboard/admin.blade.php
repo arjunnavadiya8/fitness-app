@@ -1,22 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>Welcome, {{ auth()->user()->name }}!</h2>
-        <p>You are logged in as an <strong>Admin</strong>.</p>
-        <a href="{{ route('logout') }}" class="btn btn-danger"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Logout
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
+@extends('layouts.admin')
+
+@section('title', 'Admin Dashboard')
+
+@section('content')
+    <div class="container">
+
+        <!-- Workouts List -->
+        <h1 class="mb-4">Settings</h1>
+
+        @if ($workouts->isEmpty())
+            <p>No workouts found.</p>
+        @else
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($workouts as $workout)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $workout->title }}</td>
+                            <td>{{ $workout->description }}</td>
+                            <td>{{ $workout->duration }} mins</td>
+                            <td>
+                                <!-- Edit Button -->
+                                <a href="{{ route('admin.edit-workout', $workout->id) }}" class="btn btn-sm btn-primary">Edit</a>
+
+                                <!-- Delete Button -->
+                                <form action="{{ route('admin.delete-workout', $workout->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this workout?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
-</body>
-</html>
+@endsection

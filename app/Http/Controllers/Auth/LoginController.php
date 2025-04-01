@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            return redirect($user->role === 'admin' ? '/dashboard/admin' : '/dashboard/user');
+            return redirect($user->role === 'admin' ? '/admin/home' : '/user/home');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);

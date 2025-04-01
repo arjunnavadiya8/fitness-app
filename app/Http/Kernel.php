@@ -34,6 +34,21 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'checkIfAdmin' => \App\Http\Middleware\CheckIfAdmin::class,
+    ];
+
+    /**
+     * The application's middleware groups.
+     */
+    protected $middlewareGroups = [
+        'web' => [
+        //    \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        //    \App\Http\Middleware\VerifyCsrfToken::class, // Ensure this is present
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
     ];
 }
 
