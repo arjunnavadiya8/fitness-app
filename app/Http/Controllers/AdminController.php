@@ -10,8 +10,10 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+        // Fetch workouts from the database
         $workouts = Workout::all();
 
+        // Pass workouts to the view
         return view('dashboard.admin', compact('workouts'));
     }
 

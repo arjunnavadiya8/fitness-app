@@ -63,6 +63,7 @@
                     <!-- Profile Photo -->
                     <x-form-field
                         type="file"
+                        enctype="multipart/form-type"
                         name="profile_photo"
                         label="Profile Photo"
                     />

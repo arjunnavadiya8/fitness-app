@@ -31,10 +31,10 @@ class RegisterController extends Controller
             'password' => [
                 'required',
                 'min:6',
-                'regex:/[a-z]/',         // at least one lowercase letter
-                'regex:/[A-Z]/',         // at least one uppercase letter
-                'regex:/[0-9]/',         // at least one digit
-                'regex:/[\W_]/',         // at least one special character (non-alphanumeric)
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[\W_]/',        
             ],
             'role' => 'required|in:user,admin',
             'password_confirmation' => 'required|same:password',

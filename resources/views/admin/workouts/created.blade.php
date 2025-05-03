@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <h2 class="text mb-4">Workouts</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Workouts Created by Admin</h2>
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
@@ -42,9 +42,5 @@
             @endforelse
         </tbody>
     </table>
-    <br>
-    <button class="btn btn-success" onclick="window.location.href='{{ route('admin.workouts.create') }}'">Create Workout</button>
-
 </div>
-
 @endsection

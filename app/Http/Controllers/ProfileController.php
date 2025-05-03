@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+// use Illuminate\Foundation\Auth\User;
+// use Illuminate\Database\Eloquent\Model;
 
 class ProfileController extends Controller
 {
@@ -37,7 +39,6 @@ class ProfileController extends Controller
             'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the photo
         ]);
 
-        // Handle profile photo upload
         if ($request->hasFile('profile_photo')) {
             // Delete the old profile photo if it exists
             if ($user->profile_photo_url) {

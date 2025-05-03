@@ -23,7 +23,7 @@
                         <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('workouts.index') }}">Workouts</a>
+                        <a class="nav-link" href="{{ route('user.workout') }}">Workouts</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profile') }}">Profile</a>

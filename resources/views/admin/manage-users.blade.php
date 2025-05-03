@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Manage Users</h1>
+        <h2 class="mb-4">Manage Users</h2>
 
         <!-- Success Message -->
         @if (session('success'))

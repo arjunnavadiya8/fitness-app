@@ -9,5 +9,5 @@ class Workout extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'category'];
+    protected $fillable = ['name','duration','intensity','equipment','muscle_groups', 'instructions','image'];
 }
